@@ -10,6 +10,14 @@
 
 <h1>Công Nghệ Khiếm Thị</h1>
 
+<hr>
+
+<h2>Thông báo cập nhật</h2>
+
+<p id="notice" aria-live="polite"></p>
+
+<hr>
+
 <p>
 Chào mừng bạn đến với website chia sẻ trò chơi, phần mềm và tài liệu dành cho người khiếm thị.
 </p>
@@ -18,33 +26,65 @@ Chào mừng bạn đến với website chia sẻ trò chơi, phần mềm và t
 
 <h2>Trình đơn chính</h2>
 
-<p>
-<a href="software.html">Phần mềm</a>
-</p>
+<p><a href="software.html">Phần mềm</a></p>
 
-<p>
-<a href="games.html">Trò chơi</a>
-</p>
+<p><a href="games.html">Trò chơi</a></p>
 
-<p>
-<a href="about.html">Thông tin</a>
-</p>
+<p><a href="about.html">Thông tin</a></p>
 
-<p>
-<a href="contact.html">Liên hệ</a>
-</p>
+<p><a href="contact.html">Liên hệ</a></p>
 
 <hr>
-  
-<p>
+
+  <p>
 <a href="https://github.com/cnkhiemthi/cnkhiemthi.github.io/issues/new?title=Góp%20ý%20website" target="_blank">
 Gửi góp ý
 </a>
 </p>
-  
+
 <p>
 © 2026 Công Nghệ Khiếm Thị bởi Phan Khương Nghị
 </p>
+
+<script>
+
+let minutes = ;
+let version = "";
+
+let seconds = minutes * 60;
+
+function updateNotice() {
+
+    let m = Math.floor(seconds / 60);
+    let s = seconds % 60;
+
+    document.getElementById("notice").textContent =
+        "Trang web sẽ cập nhật sau " + m + " phút " + s + " giây.";
+
+}
+
+updateNotice();
+
+let timer = setInterval(function () {
+
+    seconds--;
+
+    if (seconds <= 0) {
+
+        clearInterval(timer);
+
+        document.getElementById("notice").textContent =
+            "Website đã được cập nhật thành phiên bản " + version + ".";
+
+        return;
+
+    }
+
+    updateNotice();
+
+}, 1000);
+
+</script>
 
 </body>
 </html>
