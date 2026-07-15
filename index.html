@@ -9,14 +9,16 @@
 <body>
 
 <h1>Công Nghệ Khiếm Thị</h1>
+
 <hr>
 
 <h2>Thông báo cập nhật</h2>
 
-<p id="notice" aria-live="polite"></p>
+<p id="notice" tabindex="0"></p>
+
 <p>
 <label for="search">Tìm kiếm:</label><br>
-<input type="search" id="search" placeholder="Nhập tên phần mềm hoặc trò chơi">
+<input type="search" id="search" placeholder="Nhập tên game hoặc phần mềm">
 <button onclick="searchPage()">Tìm</button>
 </p>
 
@@ -30,25 +32,15 @@ Chào mừng bạn đến với website chia sẻ trò chơi, phần mềm và t
 
 <h2>Trình đơn chính</h2>
 
-<p>
-<a href="software.html">Phần mềm</a>
-</p>
+<p><a href="software.html">Phần mềm</a></p>
 
-<p>
-<a href="games.html">Trò chơi</a>
-</p>
+<p><a href="games.html">Trò chơi</a></p>
 
-<p>
-<a href="news.html">Tin tức</a>
-</p>
+<p><a href="news.html">Tin tức</a></p>
 
-<p>
-<a href="about.html">Thông tin</a>
-</p>
+<p><a href="about.html">Thông tin</a></p>
 
-<p>
-<a href="contact.html">Liên hệ</a>
-</p>
+<p><a href="contact.html">Liên hệ</a></p>
 
 <hr>
 
@@ -62,69 +54,57 @@ Gửi góp ý
 © 2026 Công Nghệ Khiếm Thị bởi Phan Khương Nghị
 </p>
 
-
 <script>
 
 function searchPage(){
 
     let text = document.getElementById("search").value.toLowerCase().trim();
 
+    if(text === ""){
 
-    if(text.includes("stw")){
-
-        window.location.href = "games.html";
+        alert("Vui lòng nhập từ khóa.");
         return;
 
     }
 
+    const pages = {
 
-    if(text.includes("game") || text.includes("trò chơi")){
+        // Game
+        "stw": "stw.html",
+        "eurofly": "eurofly.html",
+        "entombed": "entombed.html",
+        "q9": "q9actiongame.html",
+        "q9 action game": "q9actiongame.html",
+        "blastbay": "blastbay.html",
+        "top speed": "topspeed.html",
+        "topspeed": "topspeed.html",
 
-        window.location.href = "games.html";
+        // Phần mềm
+        "nvda": "nvda.html",
+        "obs": "obs studio.html",
+        "obs studio": "obs studio.html",
+        "reaper": "reaper.html",
+
+        // Trang
+        "trò chơi": "games.html",
+        "game": "games.html",
+        "phần mềm": "software.html",
+        "tin tức": "news.html",
+        "thông tin": "about.html",
+        "liên hệ": "contact.html"
+
+    };
+
+    if(pages[text]){
+
+        window.location.href = pages[text];
         return;
 
     }
 
-
-    if(text.includes("nvda") ||
-       text.includes("reaper") ||
-       text.includes("obs") ||
-       text.includes("phần mềm")){
-
-        window.location.href = "software.html";
-        return;
-
-    }
-
-
-    if(text.includes("tin tức")){
-
-        window.location.href = "news.html";
-        return;
-
-    }
-
-
-    if(text.includes("thông tin")){
-
-        window.location.href = "about.html";
-        return;
-
-    }
-
-
-    if(text.includes("liên hệ")){
-
-        window.location.href = "contact.html";
-        return;
-
-    }
-
-
-    alert("Không tìm thấy kết quả.");
+    alert("Không có kết quả.");
 
 }
-
 
 document.getElementById("search").addEventListener("keydown", function(event){
 
@@ -136,57 +116,56 @@ document.getElementById("search").addEventListener("keydown", function(event){
 
 });
 
-
 </script>
 
 <script>
 
+// Thời gian còn lại trước khi cập nhật (phút)
 let minutes = ;
+
+// Phiên bản mới
 let version = "";
 
 let seconds = minutes * 60;
 
+const notice = document.getElementById("notice");
 
 function updateNotice(){
 
     let m = Math.floor(seconds / 60);
     let s = seconds % 60;
 
-
-    document.getElementById("notice").textContent =
-    "Trang web sẽ cập nhật sau " + m + " phút " + s + " giây.";
+    notice.textContent =
+    "Thông báo: Trang web sẽ cập nhật sau " +
+    m +
+    " phút " +
+    s +
+    " giây.";
 
 }
 
-
 updateNotice();
-
 
 let updateTimer = setInterval(function(){
 
     seconds--;
 
-
     if(seconds <= 0){
 
         clearInterval(updateTimer);
 
-
-        document.getElementById("notice").textContent =
-        "Website đã được cập nhật thành phiên bản " + version + ".";
-
+        notice.textContent =
+        "Trang web đang cập nhật. Vui lòng quay lại sau.";
 
         return;
 
     }
 
-
     updateNotice();
-
 
 },1000);
 
-
 </script>
+
 </body>
 </html>
