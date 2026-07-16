@@ -377,7 +377,7 @@ let version = "";
 
 
 
-    // =====================
+// =====================
 // ĐỌC FILE update.json
 // =====================
 
@@ -442,9 +442,7 @@ fetch("update.json")
     }else{
 
 
-
         notice.textContent = "";
-
 
 
     }
@@ -458,15 +456,11 @@ fetch("update.json")
 
 
 
-    // Không có update.json
-    // website vẫn hoạt động bình thường
-
-
     notice.textContent = "";
 
 
-
 });
+
 
 
 
@@ -487,17 +481,18 @@ function(){
 
 
 
+    ding.volume = 1;
+
+
+    ding.currentTime = 0;
+
+
+
     ding.play()
 
 
     .then(function(){
 
-
-
-        ding.pause();
-
-
-        ding.currentTime = 0;
 
 
         soundEnabled = true;
@@ -507,7 +502,16 @@ function(){
     })
 
 
-    .catch(function(){});
+    .catch(function(error){
+
+
+
+        console.log(error);
+
+
+
+    });
+
 
 
 
@@ -525,8 +529,9 @@ function(){
 
 
 
+
 // =====================
-// ĐẶT LẠI ÂM THANH
+// ĐẶT LẠI QUYỀN ÂM THANH
 // =====================
 
 
@@ -538,6 +543,7 @@ function resetSoundPermission(){
 
 
 }
+
 
 
 
@@ -624,7 +630,7 @@ dialog.style.display="none";
 
 
 }
-    // =====================
+// =====================
 // CẬP NHẬT ĐỒNG HỒ
 // =====================
 
@@ -685,6 +691,8 @@ notice.textContent =
 
 
 
+
+
 // =====================
 // CHẠY BỘ ĐẾM NGƯỢC
 // =====================
@@ -728,20 +736,15 @@ notice.textContent =
 
 
 
-if(soundEnabled){
-
+// PHÁT ÂM THANH window.mp3
 
 
 ding.currentTime = 0;
 
 
-
 ding.play()
 .catch(function(){});
 
-
-
-}
 
 
 
