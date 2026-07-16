@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Công Nghệ Khiếm Thị</title>
+
 </head>
+
 
 <body>
 
+
 <h1>Công Nghệ Khiếm Thị</h1>
+
 
 <hr>
 
+
+<h2>Thông báo cập nhật</h2>
+
+
 <p id="notice" tabindex="0"></p>
+
+
 
 <div id="welcomeDialog"
 role="dialog"
@@ -20,73 +34,154 @@ aria-modal="true"
 aria-labelledby="dialogTitle"
 style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;">
 
+
 <div style="background:#fff;color:#000;padding:20px;max-width:420px;">
 
-<h2 id="dialogTitle">Thông báo</h2>
+
+<h2 id="dialogTitle">
+Thông báo
+</h2>
+
 
 <p>
 Website này sử dụng âm thanh để thông báo cập nhật.
 Nhấn OK để tiếp tục.
 </p>
 
-<button id="okButton" autofocus>OK</button>
+
+<button id="okButton">
+OK
+</button>
+
 
 </div>
 
+
 </div>
+
+
+
+
 
 <div id="updateDialog"
 role="dialog"
 aria-modal="true"
 style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:9999;">
 
+
 <div style="background:#fff;color:#000;padding:20px;max-width:420px;">
 
-<h2>Thông báo cập nhật</h2>
+
+<h2>
+Thông báo cập nhật
+</h2>
+
 
 <p id="updateMessage"></p>
 
-<button id="updateOK">OK</button>
+
+<button id="updateOK">
+OK
+</button>
+
 
 </div>
 
+
 </div>
+
+
+
+
 
 <p>
 
-<label for="search">Tìm kiếm:</label><br>
+<label for="search">
+Tìm kiếm:
+</label>
+
+<br>
+
 
 <input
 type="search"
 id="search"
 placeholder="Nhập tên game hoặc phần mềm">
 
-<button onclick="searchPage()">Tìm</button>
+
+<button onclick="searchPage()">
+Tìm
+</button>
+
 
 </p>
 
+
+
+
 <hr>
+
+
 
 <p>
+
 Chào mừng bạn đến với website chia sẻ trò chơi,
 phần mềm và tài liệu dành cho người khiếm thị.
+
 </p>
 
-<hr>
 
-<h2>Trình đơn chính</h2>
-
-<p><a href="software.html">Phần mềm</a></p>
-
-<p><a href="games.html">Trò chơi</a></p>
-
-<p><a href="news.html">Tin tức</a></p>
-
-<p><a href="about.html">Thông tin</a></p>
-
-<p><a href="contact.html">Liên hệ</a></p>
 
 <hr>
+
+
+
+
+<h2>
+Trình đơn chính
+</h2>
+
+
+
+<p>
+<a href="software.html">
+Phần mềm
+</a>
+</p>
+
+
+<p>
+<a href="games.html">
+Trò chơi
+</a>
+</p>
+
+
+<p>
+<a href="news.html">
+Tin tức
+</a>
+</p>
+
+
+<p>
+<a href="about.html">
+Thông tin
+</a>
+</p>
+
+
+<p>
+<a href="contact.html">
+Liên hệ
+</a>
+</p>
+
+
+
+<hr>
+
+
 
 <p>
 
@@ -99,6 +194,8 @@ Gửi góp ý
 
 </p>
 
+
+
 <p>
 
 <button onclick="resetSoundPermission()">
@@ -109,233 +206,569 @@ Gửi góp ý
 
 </p>
 
+
+
 <hr>
+
+
 
 <p>
 
 © 2026 Công Nghệ Khiếm Thị bởi Phan Khương Nghị
 
 </p>
-
 <script>
+
+
+// =====================
+// TÌM KIẾM TRANG WEB
+// =====================
+
+
 function searchPage(){
 
-    const text = document.getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
 
-    if(text===""){
-        alert("Vui lòng nhập từ khóa.");
-        return;
-    }
+let text =
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
 
-    const pages={
 
-        "stw":"stw.html",
-        "eurofly":"eurofly.html",
-        "entombed":"entombed.html",
-        "q9":"q9actiongame.html",
-        "q9 action game":"q9actiongame.html",
-        "blastbay":"blastbay.html",
-        "top speed":"topspeed.html",
-        "topspeed":"topspeed.html",
 
-        "nvda":"nvda.html",
-        "obs":"obs studio.html",
-        "obs studio":"obs studio.html",
-        "reaper":"reaper.html",
+if(text===""){
 
-        "game":"games.html",
-        "trò chơi":"games.html",
-        "phần mềm":"software.html",
-        "tin tức":"news.html",
-        "thông tin":"about.html",
-        "liên hệ":"contact.html"
 
-    };
+alert("Vui lòng nhập từ khóa.");
 
-    if(pages[text]){
-        window.location.href=pages[text];
-        return;
-    }
 
-    alert("Không có kết quả.");
+return;
+
+
 }
 
-document.getElementById("search").addEventListener("keydown",function(e){
 
-    if(e.key==="Enter"){
-        searchPage();
-    }
+
+const pages = {
+
+
+"stw":"stw.html",
+
+"eurofly":"eurofly.html",
+
+"entombed":"entombed.html",
+
+"q9":"q9actiongame.html",
+
+"q9 action game":"q9actiongame.html",
+
+"blastbay":"blastbay.html",
+
+"top speed":"topspeed.html",
+
+"topspeed":"topspeed.html",
+
+
+"nvda":"nvda.html",
+
+"obs":"obs studio.html",
+
+"obs studio":"obs studio.html",
+
+"reaper":"reaper.html",
+
+
+"game":"games.html",
+
+"trò chơi":"games.html",
+
+"phần mềm":"software.html",
+
+"tin tức":"news.html",
+
+"thông tin":"about.html",
+
+"liên hệ":"contact.html"
+
+
+};
+
+
+
+if(pages[text]){
+
+
+window.location.href =
+pages[text];
+
+
+return;
+
+
+}
+
+
+
+alert("Không có kết quả.");
+
+
+}
+
+
+
+
+
+document
+.getElementById("search")
+.addEventListener(
+"keydown",
+function(e){
+
+
+if(e.key==="Enter"){
+
+
+searchPage();
+
+
+}
+
 
 });
+
+
 
 </script>
 
+
+
+
+
 <script>
 
+
 // =====================
-// CẤU HÌNH CẬP NHẬT
+// HỆ THỐNG CẬP NHẬT
+// ĐỌC TỪ update.json
 // =====================
 
-// false = không cập nhật
-// true = bật cập nhật
 
-const updateEnabled = false;
 
-// Chỉ sửa dòng dưới khi cần cập nhật
+const notice =
+document.getElementById("notice");
 
-const endTime = new Date("2026-07-16T09:01:00+07:00").getTime();
 
-const version = "1.0";
 
-const notice = document.getElementById("notice");
+const ding =
+new Audio("window.mp3");
 
-const ding = new Audio("window.mp3");
+
 
 let soundEnabled = false;
-window.addEventListener("load", function () {
 
-    // Nếu không bật cập nhật thì không làm gì cả
-    if (!updateEnabled) {
-        notice.textContent = "";
-        return;
-    }
 
-    if (Date.now() < endTime) {
-        document.getElementById("welcomeDialog").style.display = "flex";
-        document.getElementById("okButton").focus();
-    }
+let updateEnabled = false;
 
-});
 
-document.getElementById("okButton").addEventListener("click", function () {
+let endTime = 0;
 
-    ding.play()
-    .then(function () {
 
-        ding.pause();
-        ding.currentTime = 0;
-        soundEnabled = true;
+let version = "";
 
-    })
-    .catch(function(){});
 
-    document.getElementById("welcomeDialog").style.display = "none";
 
-});
+    // =====================
+// ĐỌC FILE update.json
+// =====================
 
-function resetSoundPermission(){
 
-    location.reload();
+fetch("update.json")
 
-}
+.then(function(response){
 
-function showUpdateDialog(){
 
-    if(!updateEnabled){
-        return;
-    }
+    return response.json();
 
-    const dialog = document.getElementById("updateDialog");
-    const message = document.getElementById("updateMessage");
 
-    const remaining = Math.max(
-        0,
-        Math.floor((endTime - Date.now()) / 1000)
-    );
+})
 
-    const minutes = Math.floor(remaining / 60);
 
-    message.textContent =
-        "Trang web sẽ cập nhật sau " +
-        minutes +
-        " phút. Phiên bản mới: " +
-        version;
+.then(function(data){
 
-    dialog.style.display = "flex";
 
-    document.getElementById("updateOK").focus();
 
-    document.getElementById("updateOK").onclick = function () {
-        dialog.style.display = "none";
-    };
+    updateEnabled = data.enabled;
 
-}
-function updateNotice(){
 
-    if(!updateEnabled){
-        notice.textContent = "";
-        return;
-    }
 
-    const remaining = Math.max(
-        0,
-        Math.floor((endTime - Date.now()) / 1000)
-    );
+    version = data.version;
 
-    const minutes = Math.floor(remaining / 60);
-    const seconds = remaining % 60;
 
-    notice.textContent =
-        "Thông báo: Trang web sẽ cập nhật sau " +
-        minutes +
-        " phút " +
-        seconds +
-        " giây. Phiên bản mới: " +
-        version;
 
-}
+    endTime =
+    new Date(data.time).getTime();
 
-if(updateEnabled){
 
-    showUpdateDialog();
 
-    updateNotice();
 
-    const updateTimer = setInterval(function(){
+    if(updateEnabled){
 
-        const remaining = Math.floor(
-            (endTime - Date.now()) / 1000
-        );
 
-        if(remaining <= 0){
 
-            clearInterval(updateTimer);
+        document
+        .getElementById("welcomeDialog")
+        .style.display = "flex";
 
-            notice.setAttribute(
-                "aria-live",
-                "assertive"
-            );
 
-            notice.textContent =
-                "Trang web đang cập nhật. Vui lòng quay lại sau.";
 
-            if(soundEnabled){
+        document
+        .getElementById("okButton")
+        .focus();
 
-                ding.currentTime = 0;
 
-                ding.play().catch(function(){});
 
-            }
+        showUpdateDialog();
 
-            return;
 
-        }
 
         updateNotice();
 
-    },1000);
 
-}else{
 
-    // Không cập nhật -> website hoạt động bình thường
+        startUpdateTimer();
+
+
+
+    }else{
+
+
+
+        notice.textContent = "";
+
+
+
+    }
+
+
+
+})
+
+
+.catch(function(){
+
+
+
+    // Không có update.json
+    // website vẫn hoạt động bình thường
+
+
     notice.textContent = "";
+
+
+
+});
+
+
+
+
+
+
+// =====================
+// CHO PHÉP ÂM THANH
+// =====================
+
+
+
+document
+.getElementById("okButton")
+.addEventListener(
+"click",
+function(){
+
+
+
+    ding.play()
+
+
+    .then(function(){
+
+
+
+        ding.pause();
+
+
+        ding.currentTime = 0;
+
+
+        soundEnabled = true;
+
+
+
+    })
+
+
+    .catch(function(){});
+
+
+
+
+    document
+    .getElementById("welcomeDialog")
+    .style.display = "none";
+
+
+
+});
+
+
+
+
+
+
+// =====================
+// ĐẶT LẠI ÂM THANH
+// =====================
+
+
+
+function resetSoundPermission(){
+
+
+    location.reload();
+
 
 }
 
+
+
+
+
+
+// =====================
+// HIỆN THÔNG BÁO CẬP NHẬT
+// =====================
+
+
+
+function showUpdateDialog(){
+
+
+
+if(!updateEnabled){
+
+
+return;
+
+
+}
+
+
+
+let dialog =
+document.getElementById("updateDialog");
+
+
+
+let message =
+document.getElementById("updateMessage");
+
+
+
+let remaining =
+Math.max(
+0,
+Math.floor((endTime-Date.now())/1000)
+);
+
+
+
+let minutes =
+Math.floor(remaining/60);
+
+
+
+message.textContent =
+
+"Trang web sẽ cập nhật sau "
+
++ minutes +
+
+" phút. Phiên bản mới: "
+
++ version;
+
+
+
+dialog.style.display = "flex";
+
+
+
+document
+.getElementById("updateOK")
+.focus();
+
+
+
+document
+.getElementById("updateOK")
+.onclick=function(){
+
+
+
+dialog.style.display="none";
+
+
+
+};
+
+
+
+}
+    // =====================
+// CẬP NHẬT ĐỒNG HỒ
+// =====================
+
+
+function updateNotice(){
+
+
+if(!updateEnabled){
+
+
+notice.textContent = "";
+
+
+return;
+
+
+}
+
+
+
+let remaining =
+Math.max(
+0,
+Math.floor((endTime-Date.now())/1000)
+);
+
+
+
+let minutes =
+Math.floor(remaining/60);
+
+
+
+let seconds =
+remaining % 60;
+
+
+
+notice.textContent =
+
+"Thông báo: Trang web sẽ cập nhật sau "
+
++ minutes +
+
+" phút "
+
++ seconds +
+
+" giây. Phiên bản mới: "
+
++ version;
+
+
+
+}
+
+
+
+
+
+// =====================
+// CHẠY BỘ ĐẾM NGƯỢC
+// =====================
+
+
+function startUpdateTimer(){
+
+
+
+let updateTimer =
+setInterval(function(){
+
+
+
+let remaining =
+Math.floor(
+(endTime-Date.now())/1000
+);
+
+
+
+if(remaining <= 0){
+
+
+
+clearInterval(updateTimer);
+
+
+
+notice.setAttribute(
+"aria-live",
+"assertive"
+);
+
+
+
+notice.textContent =
+
+"Trang web đang cập nhật. Vui lòng quay lại sau.";
+
+
+
+
+if(soundEnabled){
+
+
+
+ding.currentTime = 0;
+
+
+
+ding.play()
+.catch(function(){});
+
+
+
+}
+
+
+
+return;
+
+
+
+}
+
+
+
+updateNotice();
+
+
+
+},1000);
+
+
+
+}
+
+
+
 </script>
 
+
 </body>
+
+
 </html>
