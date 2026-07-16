@@ -16,50 +16,75 @@
 
 <p id="notice" tabindex="0"></p>
 
-<div id="welcomeDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" style="position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;">
+
+<div id="welcomeDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"
+style="position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;">
+
 <div style="background:#fff;color:#000;padding:20px;max-width:420px;">
+
 <h2 id="dialogTitle">Thông báo</h2>
+
 <p>Website này sử dụng âm thanh để thông báo cập nhật. Nhấn OK để tiếp tục.</p>
+
 <button id="okButton" autofocus>OK</button>
-</div></div>
+
+</div>
+</div>
+
+
+<div id="updateDialog" role="dialog" aria-modal="true"
+style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:9999;">
+
+<div style="background:#fff;color:#000;padding:20px;max-width:420px;">
+
+<h2>Thông báo cập nhật</h2>
+
+<p id="updateMessage"></p>
+
+<button id="updateOK">OK</button>
+
+</div>
+</div>
+
 
 <p>
+
 <label for="search">Tìm kiếm:</label><br>
+
 <input type="search" id="search" placeholder="Nhập tên game hoặc phần mềm">
+
 <button onclick="searchPage()">Tìm</button>
+
 </p>
 
+
 <hr>
+
 
 <p>
 Chào mừng bạn đến với website chia sẻ trò chơi, phần mềm và tài liệu dành cho người khiếm thị.
 </p>
 
+
 <hr>
+
 
 <h2>Trình đơn chính</h2>
 
-<p>
-<a href="software.html">Phần mềm</a>
-</p>
 
-<p>
-<a href="games.html">Trò chơi</a>
-</p>
+<p><a href="software.html">Phần mềm</a></p>
 
-<p>
-<a href="news.html">Tin tức</a>
-</p>
+<p><a href="games.html">Trò chơi</a></p>
 
-<p>
-<a href="about.html">Thông tin</a>
-</p>
+<p><a href="news.html">Tin tức</a></p>
 
-<p>
-<a href="contact.html">Liên hệ</a>
-</p>
+<p><a href="about.html">Thông tin</a></p>
+
+<p><a href="contact.html">Liên hệ</a></p>
+
 
 <hr>
+
 
 <p>
 <a href="https://github.com/cnkhiemthi/cnkhiemthi.github.io/issues/new?title=Góp%20ý%20website" target="_blank">
@@ -67,163 +92,340 @@ Gửi góp ý
 </a>
 </p>
 
+
+<p>
+<button onclick="resetSoundPermission()">
+Đặt lại quyền âm thanh
+</button>
+</p>
+
+
+<hr>
+
+
 <p>
 © 2026 Công Nghệ Khiếm Thị bởi Phan Khương Nghị
 </p>
+
+
 
 <script>
 
 function searchPage(){
 
-    let text = document.getElementById("search").value.toLowerCase().trim();
+let text=document.getElementById("search").value.toLowerCase().trim();
 
-    if(text === ""){
 
-        alert("Vui lòng nhập từ khóa.");
-        return;
+if(text===""){
 
-    }
+alert("Vui lòng nhập từ khóa.");
 
-    const pages = {
-
-        "stw": "stw.html",
-        "eurofly": "eurofly.html",
-        "entombed": "entombed.html",
-        "q9": "q9actiongame.html",
-        "q9 action game": "q9actiongame.html",
-        "blastbay": "blastbay.html",
-        "top speed": "topspeed.html",
-        "topspeed": "topspeed.html",
-
-        "nvda": "nvda.html",
-        "obs": "obs studio.html",
-        "obs studio": "obs studio.html",
-        "reaper": "reaper.html",
-
-        "game": "games.html",
-        "trò chơi": "games.html",
-        "phần mềm": "software.html",
-        "tin tức": "news.html",
-        "thông tin": "about.html",
-        "liên hệ": "contact.html"
-
-    };
-
-    if(pages[text]){
-
-        window.location.href = pages[text];
-        return;
-
-    }
-
-    alert("Không có kết quả.");
+return;
 
 }
 
-document.getElementById("search").addEventListener("keydown", function(event){
 
-    if(event.key === "Enter"){
+const pages={
 
-        searchPage();
+"stw":"stw.html",
+"eurofly":"eurofly.html",
+"entombed":"entombed.html",
+"q9":"q9actiongame.html",
+"q9 action game":"q9actiongame.html",
+"blastbay":"blastbay.html",
+"top speed":"topspeed.html",
+"topspeed":"topspeed.html",
 
-    }
+"nvda":"nvda.html",
+"obs":"obs studio.html",
+"obs studio":"obs studio.html",
+"reaper":"reaper.html",
+
+"game":"games.html",
+"trò chơi":"games.html",
+"phần mềm":"software.html",
+"tin tức":"news.html",
+"thông tin":"about.html",
+"liên hệ":"contact.html"
+
+};
+
+
+if(pages[text]){
+
+window.location.href=pages[text];
+
+return;
+
+}
+
+
+alert("Không có kết quả.");
+
+}
+
+
+
+document.getElementById("search").addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+searchPage();
+
+}
 
 });
 
-</script>
 
+</script>
 <script>
 
 // Thời gian còn lại trước khi cập nhật (phút)
-let minutes =;
+
+let minutes =0;
+
 
 // Phiên bản mới
-let version ="";
+
+let version =""
+
 
 let seconds = minutes * 60;
 
+
 const notice = document.getElementById("notice");
+
 
 const ding = new Audio("window.mp3");
 
+
 let soundEnabled = false;
 
-window.addEventListener("load", function(){document.getElementById("okButton").focus();});
 
-document.getElementById("okButton").addEventListener("click", function(){
 
-    ding.play().then(function(){
+window.addEventListener("load", function(){
 
-        ding.pause();
-        ding.currentTime = 0;
+    if(minutes > 0){
 
-        soundEnabled = true;
+        document.getElementById("welcomeDialog").style.display="flex";
 
-        
+        document.getElementById("okButton").focus();
 
-    }).catch(function(){
+    }else{
 
-        
-
-    });
-
-    document.getElementById("welcomeDialog").style.display="none";
-});
-
-function updateNotice(){
-
-    let m = Math.floor(seconds / 60);
-    let s = seconds % 60;
-
-    notice.textContent =
-    "Thông báo: Trang web sẽ cập nhật sau " +
-    m +
-    " phút " +
-    s +
-    " giây.";
-
-}
-
-updateNotice();
-
-let updateTimer = setInterval(function(){
-
-    seconds--;
-
-    if(seconds <= 0){
-
-        clearInterval(updateTimer);
-
-        notice.setAttribute("aria-live","assertive");
-
-        if(soundEnabled){
-
-            ding.currentTime = 0;
-            ding.play().catch(function(){});
-
-            setTimeout(function(){
-
-                notice.textContent =
-                "Trang web đang cập nhật. Vui lòng quay lại sau.";
-
-            },500);
-
-        }else{
-
-            notice.textContent =
-            "Trang web đang cập nhật. Vui lòng quay lại sau.";
-
-        }
-
-        return;
+        document.getElementById("welcomeDialog").style.display="none";
 
     }
 
-    updateNotice();
+});
+
+
+
+if(minutes > 0){
+
+
+document.getElementById("okButton").addEventListener("click", function(){
+
+
+    ding.play().then(function(){
+
+
+        ding.pause();
+
+        ding.currentTime = 0;
+
+
+        soundEnabled = true;
+
+
+    }).catch(function(){
+
+
+
+    });
+
+
+
+    document.getElementById("welcomeDialog").style.display="none";
+
+
+});
+
+
+}
+
+
+
+
+function resetSoundPermission(){
+
+location.reload();
+
+}
+
+
+
+
+function showUpdateDialog(){
+
+
+if(minutes > 0){
+
+
+let dialog=document.getElementById("updateDialog");
+
+
+let message=document.getElementById("updateMessage");
+
+
+
+message.textContent =
+
+"Trang web sẽ cập nhật sau "
+
++minutes+
+
+" phút. Phiên bản mới: "
+
++version;
+
+
+
+dialog.style.display="flex";
+
+
+
+document.getElementById("updateOK").focus();
+
+
+
+document.getElementById("updateOK").onclick=function(){
+
+
+dialog.style.display="none";
+
+
+};
+
+
+}
+
+
+}
+
+
+
+
+
+function updateNotice(){
+
+
+if(minutes<=0){
+
+
+notice.textContent="";
+
+
+return;
+
+
+}
+
+
+
+let m=Math.floor(seconds/60);
+
+let s=seconds%60;
+
+
+
+notice.textContent=
+
+"Thông báo: Trang web sẽ cập nhật sau "
+
++m+
+
+" phút "
+
++s+
+
+" giây. Phiên bản mới: "
+
++version;
+
+
+}
+
+
+
+
+showUpdateDialog();
+
+
+updateNotice();
+
+
+
+if(minutes>0){
+
+
+let updateTimer=setInterval(function(){
+
+
+seconds--;
+
+
+
+if(seconds<=0){
+
+
+clearInterval(updateTimer);
+
+
+
+notice.setAttribute("aria-live","assertive");
+
+
+
+notice.textContent=
+
+"Trang web đang cập nhật. Vui lòng quay lại sau.";
+
+
+
+if(soundEnabled){
+
+
+ding.currentTime=0;
+
+
+ding.play().catch(function(){});
+
+
+}
+
+
+
+return;
+
+
+}
+
+
+
+updateNotice();
+
+
 
 },1000);
 
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
