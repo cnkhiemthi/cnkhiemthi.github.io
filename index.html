@@ -359,8 +359,11 @@ document.getElementById("notice");
 
 
 
-const ding =
-new Audio("window.mp3");
+const ding = new Audio();
+
+ding.src = "window.mp3";
+
+ding.preload = "auto";
 
 
 
@@ -374,8 +377,6 @@ let endTime = 0;
 
 
 let version = "";
-
-
 
 // =====================
 // ĐỌC FILE update.json
