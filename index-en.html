@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -57,27 +57,27 @@ Welcome to the website sharing games, software and documents for blind users.
 Main Menu
 </h2>
 <p>
-<a href="software.html">
+<a href="software-en.html">
 Software
 </a>
 </p>
 <p>
-<a href="games.html">
+<a href="games-en.html">
 Games
 </a>
 </p>
 <p>
-<a href="news.html">
+<a href="news-en.html">
 News
 </a>
 </p>
 <p>
-<a href="about.html">
+<a href="about-en.html">
 About
 </a>
 </p>
 <p>
-<a href="contact.html">
+<a href="contact-en.html">
 Contact
 </a>
 </p>
@@ -99,7 +99,7 @@ Reset Sound Permission
 <hr/>
 <p>
 
-© 2026 Blind Technology by Phan Khương Nghị
+© 2026 Blind Technology by Phan Khuong Nghi
 
 </p>
 <script>
@@ -461,8 +461,11 @@ updateNotice();
 
 </script>
 <script>
+const savedLang=localStorage.getItem("language");
+if(savedLang!=="en"){window.location.replace("index.html");}
 document.getElementById('langConfirm').addEventListener('click',function(){
 const l=document.getElementById('language').value;
+localStorage.setItem("language",l);
 if(l==='en'){window.location.href='index-en.html';}else{window.location.href='index.html';}
 });
 </script></body>
