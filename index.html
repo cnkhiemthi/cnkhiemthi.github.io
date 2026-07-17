@@ -1,167 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Công Nghệ Khiếm Thị</title>
-
 </head>
-
-<body>
-
+<body><div><label for="language">Ngôn ngữ:</label><select id="language"><option value="vi">Tiếng Việt</option><option value="en">English</option></select><button id="langConfirm">Xác nhận</button></div>
 <h1>Công Nghệ Khiếm Thị</h1>
-
-<hr>
-
+<hr/>
 <h2>Thông báo cập nhật</h2>
-
 <p id="notice" tabindex="0"></p>
-
-<div id="welcomeDialog"
-role="dialog"
-aria-modal="true"
-aria-labelledby="dialogTitle"
-style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;">
-
+<div aria-labelledby="dialogTitle" aria-modal="true" id="welcomeDialog" role="dialog" style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;">
 <div style="background:#fff;color:#000;padding:20px;max-width:420px;">
-
 <h2 id="dialogTitle">
 Thông báo
 </h2>
-
 <p>
 Website này sử dụng âm thanh để thông báo cập nhật.
 Nhấn OK để tiếp tục.
 </p>
-
 <button id="okButton">
 OK
 </button>
-
 </div>
-
 </div>
-
-<div id="updateDialog"
-role="dialog"
-aria-modal="true"
-style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:9999;">
-
+<div aria-modal="true" id="updateDialog" role="dialog" style="display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:9999;">
 <div style="background:#fff;color:#000;padding:20px;max-width:420px;">
-
 <h2>
 Thông báo cập nhật
 </h2>
-
 <p id="updateMessage"></p>
-
 <button id="updateOK">
 OK
 </button>
-
 </div>
-
 </div>
-
 <p>
-
 <label for="search">
 Tìm kiếm:
 </label>
-
-<br>
-
-<input
-type="search"
-id="search"
-placeholder="Nhập tên game hoặc phần mềm">
-
+<br/>
+<input id="search" placeholder="Nhập tên game hoặc phần mềm" type="search"/>
 <button onclick="searchPage()">
 Tìm
 </button>
-
 </p>
-
-<hr>
-
+<hr/>
 <p>
 
 Chào mừng bạn đến với website chia sẻ trò chơi,
 phần mềm và tài liệu dành cho người khiếm thị.
 
 </p>
-
-<hr>
-
+<hr/>
 <h2>
 Trình đơn chính
 </h2>
-
 <p>
 <a href="software.html">
 Phần mềm
 </a>
 </p>
-
 <p>
 <a href="games.html">
 Trò chơi
 </a>
 </p>
-
 <p>
 <a href="news.html">
 Tin tức
 </a>
 </p>
-
 <p>
 <a href="about.html">
 Thông tin
 </a>
 </p>
-
 <p>
 <a href="contact.html">
 Liên hệ
 </a>
 </p>
-
-<hr>
-
+<hr/>
 <p>
-
-<a href="https://github.com/cnkhiemthi/cnkhiemthi.github.io/issues/new?title=Góp%20ý%20website"
-target="_blank">
+<a href="https://github.com/cnkhiemthi/cnkhiemthi.github.io/issues/new?title=Góp%20ý%20website" target="_blank">
 
 Gửi góp ý
 
 </a>
-
 </p>
-
 <p>
-
 <button onclick="resetSoundPermission()">
 
 Đặt lại quyền âm thanh
 
 </button>
-
 </p>
-
-<hr>
-
+<hr/>
 <p>
 
 © 2026 Công Nghệ Khiếm Thị bởi Phan Khương Nghị
 
 </p>
-
 <script>
 
 // =====================
@@ -262,7 +203,6 @@ searchPage();
 });
 
 </script>
-
 <script>
 
 // =====================
@@ -521,7 +461,10 @@ updateNotice();
 }
 
 </script>
-
-</body>
-
+<script>
+document.getElementById('langConfirm').addEventListener('click',function(){
+const l=document.getElementById('language').value;
+if(l==='en'){window.location.href='index-en.html';}
+});
+</script></body>
 </html>
