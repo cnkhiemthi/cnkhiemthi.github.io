@@ -462,8 +462,15 @@ updateNotice();
 
 </script>
 <script>
+// Khôi phục ngôn ngữ đã lưu
+const savedLang = localStorage.getItem("language");
+if(savedLang === "en"){
+    window.location.replace("index-en.html");
+}
+
 document.getElementById('langConfirm').addEventListener('click',function(){
 const l=document.getElementById('language').value;
+localStorage.setItem("language",l);
 if(l==='en'){window.location.href='index-en.html';}
 });
 </script></body>
