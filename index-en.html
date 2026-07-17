@@ -118,7 +118,7 @@ document.getElementById("search")
 
 if(text===""){
 
-alert("Vui lòng nhập từ khóa.");
+alert("Please enter a keyword.");
 
 return;
 
@@ -147,15 +147,15 @@ const pages = {
 
 "game":"games.html",
 
-"trò chơi":"games.html",
+"game":"games.html",
 
-"phần mềm":"software.html",
+"software":"software.html",
 
-"tin tức":"news.html",
+"news":"news.html",
 
-"thông tin":"about.html",
+"about":"about.html",
 
-"liên hệ":"contact.html"
+"contact":"contact.html"
 
 };
 
@@ -184,7 +184,7 @@ return;
 
 }
 
-alert("Không có kết quả.");
+alert("No results found.");
 }
 
 document
@@ -349,11 +349,11 @@ Math.floor(remaining/60);
 
 message.textContent =
 
-"Trang web sẽ cập nhật sau "
+"The website will update in "
 
 + minutes +
 
-" phút. Phiên bản mới: "
+" minutes. New version: "
 
 + version;
 
@@ -401,15 +401,15 @@ remaining % 60;
 
 notice.textContent =
 
-"Notice: Trang web sẽ cập nhật sau "
+"Notice: The website will update in "
 
 + minutes +
 
-" phút "
+" minutes "
 
 + seconds +
 
-" giây. Phiên bản mới: "
+" seconds. New version: "
 
 + version;
 
@@ -440,7 +440,7 @@ notice.setAttribute(
 
 notice.textContent =
 
-"Trang web đang cập nhật. Vui lòng quay lại sau.";
+"The website is updating. Please come back later.";
 
 // PHÁT ÂM THANH window.mp3
 
@@ -463,7 +463,7 @@ updateNotice();
 <script>
 document.getElementById('langConfirm').addEventListener('click',function(){
 const l=document.getElementById('language').value;
-if(l==='en'){window.location.href='index-en.html';}
+if(l==='en'){window.location.href='index-en.html';}else{window.location.href='index.html';}
 });
 </script></body>
 </html>
